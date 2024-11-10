@@ -1,38 +1,33 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Влизане</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <h2>Вход</h2>
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'authentication/signin.css' %}">
+{% endblock head %}
+
+{% block main %}
+    <div class="signin-container">
+        <h2 class="signin-title">Вход</h2>
 
         {% for message in messages %}
-        <strong role="alert">Съобщение:</strong> {{ message }}
+            <strong role="alert" class="alert-message">Съобщение:</strong> {{ message }}
         {% endfor %}
 
-
-
-        <form method="post">
+        <form method="post" class="signin-form">
             {% csrf_token %}
-            <!-- Email -->
-            <label for="email">Потребителско Име</label>
-            <input type="text" id="username" name="username" Required>
-            <br>
-            <!-- Password -->
-            <label for="password">Парола</label>
-            <input type="password" id="password" name="password" Required>
-            <div id="showPassword"><input type="checkbox" onclick="showPassword()" >Покажи парола
+            
+            <div class="input-group">
+                <label for="username" class="input-label">Потребителско Име</label>
+                <input type="text" id="username" name="username" required class="input-field">
             </div>
 
-            <!-- Submit -->
-            <button id="submit">Влизане</button>
+            <div class="input-group">
+                <label for="password" class="input-label">Парола</label>
+                <input type="password" id="password" name="password" required class="input-field">
+            </div>
+
+            <button type="submit" class="submit-btn">Влизане</button>
         </form>
-        <p>Нямаш акаунт? <a href="/signup">Регистрация</a></p>
-        <script src="" async defer></script>
-    </body>
-</html>
+        <p class="signup-link">Нямаш акаунт? <a href="/signup" class="signup-link">Регистрация</a></p>
+    </div>
+{% endblock main %}

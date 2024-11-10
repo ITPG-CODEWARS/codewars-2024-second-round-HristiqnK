@@ -11,6 +11,7 @@ from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.utils.encoding import force_bytes, force_str
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from ShortenerApp.models import URL
 import random
 
 username_errors = {
@@ -90,7 +91,7 @@ def signin(request):
 
         if user is not None:
             login(request, user)
-            return redirect('account')  # redirect to account view instead of rendering the template directly
+            return redirect('home')
 
         else:
             messages.error(request, "Невалидно потребителско име или парола.")
@@ -102,8 +103,13 @@ def signout(request):
     logout(request)
     messages.success(request, "Излязохте от профила си успешно!")
     return render(request, "home/index.html")
-
-@login_required  # Ensure the user is logged in to access this view
+@login_required
 def account(request):
     user = request.user
-    return render(request, "authentication/account.html", {'username': user.username, 'email': user.email})
+    urls = URL.objects.filter(username=user.username)
+    return render(request, "authentication/account.html", 
+    {
+        'username': user.username,
+        'email': user.email,
+        'urls': urls,
+    })

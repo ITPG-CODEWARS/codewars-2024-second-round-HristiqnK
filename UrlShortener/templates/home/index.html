@@ -1,28 +1,32 @@
+{% extends 'base/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'index/index.css' %}">
-    </head>
-    <body>
-        <h3>Welcome!</h3>
-        <button type="submit"> <a href="/signup">SignUp</a> </button>
-        <button type="submit"> <a href="/signin">SignIn</a> </button>
-        <form method = "post">
-            {% csrf_token %}
-            <label for="longurl">Enter URL:</label>
-            <input type="url" name="longurl" id="longurl" required>
-        
-            <label for="code">Enter Code:</label>
-            <input type="text" name="code" id="code" required>
-        
-            <button type="submit">Save URL</button>
-            </form>
-        <script src="" async defer></script>
-    </body>
-</html>
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'index/index.css' %}">
+{% endblock head %}
+
+{% block main %}
+    <div class="index-container">
+        {% if user.is_authenticated %}
+            <div class="form-container">
+                <h2 class="form-title">URL Shortener</h2>
+                <form method="post" class="shortener-form">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <label for="longurl" class="input-label">Enter URL:</label>
+                        <input type="url" name="longurl" id="longurl" required class="input-field">
+                    </div>
+                    <div class="input-group">
+                        <label for="code" class="input-label">Enter Code:</label>
+                        <input type="text" name="code" id="code" required class="input-field">
+                    </div>
+                    <button class="submit-btn" type="submit">Save URL</button>
+                </form>
+            </div>
+        {% else %}
+            <div class="signin-prompt">
+                <p>Please <a href="/signin" class="signin-link">sign in</a> to use the URL shortener.</p>
+            </div>
+        {% endif %}
+    </div>
+{% endblock main %}
