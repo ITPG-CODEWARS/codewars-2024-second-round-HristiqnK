@@ -8,11 +8,11 @@
 {% block main %}
     <div class="account-container">
         {% for message in messages %}
-            <strong role="alert">Съобщение:</strong> {{ message }}
+            <strong role="alert">Message:</strong> {{ message }}
         {% endfor %}
 
-        <h3 class="greeting">Здравейте, {{username}}!</h3>
-        <p class="email">имейл: {{email}}</p>
+        <h3 class="greeting">Hello, {{username}}!</h3>
+        <p class="email">Email: {{email}}</p>
         <button class="signout-btn"> <a href="/signout">SignOut</a></button>
 
         <h4 class="urls-title">Your URLs:</h4>

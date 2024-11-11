@@ -8,42 +8,42 @@
 {% block main %}
     <div class="signup-container">
         {% for message in messages %}
-            <strong role="alert" class="alert-message">Съобщение:</strong> {{ message }}
+            <strong role="alert" class="alert-message">Message:</strong> {{ message }}
         {% endfor %}
 
-        <h2 class="signup-title">Регистрация</h2>
+        <h2 class="signup-title">Sign Up</h2>
 
         <form method="post" action="/signup" class="signup-form">
             {% csrf_token %}
             <div class="input-group">
-                <label for="username" class="input-label">Потребителско име</label>
+                <label for="username" class="input-label">Username</label>
                 <input type="text" id="username" name="username" required class="input-field">
             </div>
 
             <div class="input-group">
-                <label for="email" class="input-label">Имейл</label>
+                <label for="email" class="input-label">Email</label>
                 <input type="email" id="email" name="email" required class="input-field">
             </div>
 
             <div class="input-group">
-                <label for="password" class="input-label">Парола</label>
+                <label for="password" class="input-label">Password</label>
                 <input type="password" id="password" name="password" required class="input-field">
             </div>
 
-            <button type="submit" class="submit-btn">Регистрация</button>
+            <button type="submit" class="submit-btn">Sign Up</button>
         </form>
 
-        <h2 class="captcha-title">Въведете кода който беше изпратен на вашият имейл адрес!</h2>
+        <h2 class="captcha-title">Enter the code that was sent to your email address!</h2>
 
         <form method="post" action="confirm" class="captcha-form">
             {% csrf_token %}
             <div class="input-group">
-                <label for="capchatest" class="input-label">Код:</label>
+                <label for="capchatest" class="input-label">Code:</label>
                 <input type="text" id="capchatest" name="capchatest" required class="input-field">
             </div>
-            <button type="submit" class="submit-btn">Завършване на Регистрацията</button>
+            <button type="submit" class="submit-btn">Finish Sign Up</button>
         </form>
 
-        <p class="signin-link">Вече имаш акаунт? <a href="/signin" class="signin-link">Влизане</a></p>
+        <p class="signin-link">Already have an account? <a href="/signin" class="signin-link">Sign In</a></p>
     </div>
 {% endblock main %}

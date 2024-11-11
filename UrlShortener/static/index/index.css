@@ -67,6 +67,27 @@ header
     box-sizing: border-box;
 }
 
+.acc-btn {
+    width: 100%;
+    font-size: 3vh;
+    background-color: #4CAF50;
+    color: white;
+    padding: 1vh 2vh;
+    border: none;
+    border-radius: 0.5vh;
+    cursor: pointer;
+    margin-top: 2vh;
+}
+
+.acc-btn a {
+    color: white;
+    text-decoration: none;
+}
+
+.acc-btn:hover {
+    background-color: #45a049;
+}
+
 .submit-btn {
     width: 100%;
     padding: 10px;

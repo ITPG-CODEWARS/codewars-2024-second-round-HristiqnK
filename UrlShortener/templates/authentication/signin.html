@@ -7,27 +7,27 @@
 
 {% block main %}
     <div class="signin-container">
-        <h2 class="signin-title">Вход</h2>
+        <h2 class="signin-title">Sign In</h2>
 
         {% for message in messages %}
-            <strong role="alert" class="alert-message">Съобщение:</strong> {{ message }}
+            <strong role="alert" class="alert-message">Message:</strong> {{ message }}
         {% endfor %}
 
         <form method="post" class="signin-form">
             {% csrf_token %}
             
             <div class="input-group">
-                <label for="username" class="input-label">Потребителско Име</label>
+                <label for="username" class="input-label">Username</label>
                 <input type="text" id="username" name="username" required class="input-field">
             </div>
 
             <div class="input-group">
-                <label for="password" class="input-label">Парола</label>
+                <label for="password" class="input-label">Password</label>
                 <input type="password" id="password" name="password" required class="input-field">
             </div>
 
-            <button type="submit" class="submit-btn">Влизане</button>
+            <button type="submit" class="submit-btn">Sign In</button>
         </form>
-        <p class="signup-link">Нямаш акаунт? <a href="/signup" class="signup-link">Регистрация</a></p>
+        <p class="signup-link">Don't have an account?? <a href="/signup" class="signup-link">Sign Up</a></p>
     </div>
 {% endblock main %}
