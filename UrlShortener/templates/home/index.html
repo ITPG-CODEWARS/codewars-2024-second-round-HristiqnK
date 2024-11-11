@@ -5,6 +5,17 @@
     <link rel="stylesheet" href="{% static 'index/index.css' %}">
 {% endblock head %}
 
+
+{% block header %}
+    <header>
+        <div class="img-div">
+            <img src="{% static 'index/logo.png' %}" alt="Logo" class="logo">
+        </div>
+    </header>
+   
+{% endblock header %}
+
+
 {% block main %}
     <div class="index-container">
         {% if user.is_authenticated %}
